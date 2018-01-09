@@ -202,4 +202,13 @@ public class MainActivity extends AppCompatActivity {
 
         mNoteAdapter.saveNotes();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mPrefs = getSharedPreferences("Note to self", MODE_PRIVATE);
+        mSound = mPrefs.getBoolean("sound", true);
+        mAnimOption = mPrefs.getInt("sort option", SettingsActivity.FAST);
+    }
 }
